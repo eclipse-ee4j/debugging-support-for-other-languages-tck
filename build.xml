@@ -1,0 +1,69 @@
+<!--
+
+    Copyright (c) 2018 Oracle and/or its affiliates. All rights reserved.
+
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0, which is available at
+    http://www.eclipse.org/legal/epl-2.0.
+
+    This Source Code may also be made available under the following Secondary
+    Licenses when the conditions for such availability set forth in the
+    Eclipse Public License v. 2.0 are satisfied: GNU General Public License,
+    version 2 with the GNU Classpath Exception, which is available at
+    https://www.gnu.org/software/classpath/license.html.
+
+    SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+
+-->
+
+<project name="jsp-debugging-tck" default="dist" basedir=".">
+
+  <description>
+      Build file for building JSP Debugging TCK
+  </description>
+
+  <!-- set global properties for this build -->
+  <property name="deliverable.name" value="dsol-tck"/>
+  <property name="deliverable.version" value="1.0"/>
+  <property name="jar.name" 
+            value="${deliverable.name}-${deliverable.version}.jar"/>
+  <property name="bundle.name" 
+            value="${deliverable.name}-${deliverable.version}.zip"/>
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist" location="dist"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init"
+          description="compile the source">
+    <!-- Compile the java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${build}" encoding="ISO-8859-1" />
+  </target>
+
+  <target name="dist" depends="compile"
+          description="generate the distribution">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}"/>
+    <jar jarfile="${dist}/${jar.name}" basedir="${build}"/>
+    <zip destfile="${dist}/${bundle.name}">
+      <fileset dir="." includes="doc/**/*"/>
+      <fileset dir="." includes="src/**/*"/>
+      <fileset dir="." includes="*.md"/>
+      <fileset dir="." includes="build.xml"/>
+      <fileset dir="dist" includes="*.jar"/>
+    </zip>
+  </target>
+
+  <target name="clean" description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+
+</project>
