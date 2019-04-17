@@ -30,6 +30,14 @@ spec:
 """
     }
   }
+   parameters {
+    string(name: 'GF_BUNDLE_URL', 
+           defaultValue: '', 
+           description: 'URL required for downloading GlassFish Full/Web profile bundle' )
+    string(name: 'GF_VERSION_URL', 
+           defaultValue: '', 
+           description: 'URL required for downloading GlassFish version details' )
+  }
   environment {
     ANT_OPTS = "-Djavax.xml.accessExternalStylesheet=all -Djavax.xml.accessExternalSchema=all -Djavax.xml.accessExternalDTD=file,http" 
   }
@@ -41,11 +49,23 @@ spec:
             env
             bash -x ${WORKSPACE}/docker/build_dsoltck.sh
           """
-          archiveArtifacts artifacts: 'bundles/*.zip'
-          stash includes: 'bundles/*.zip', name: 'dsol-bundles'
+          archiveArtifacts artifacts: 'bundles/*'
+          stash includes: 'bundles/*', name: 'dsol-bundles'
         }
       }
     }
+
+    stage('dsol-tck-run') {
+      steps {
+        container('dsol-tck-ci') {
+          sh """
+            env
+            bash -x ${WORKSPACE}/docker/run_dsoltck.sh
+          """
+        }
+      }
+    }
+
   
   }
 }
