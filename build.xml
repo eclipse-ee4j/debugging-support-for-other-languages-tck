@@ -58,6 +58,9 @@
       <fileset dir="." includes="build.xml"/>
       <fileset dir="dist" includes="*.jar"/>
     </zip>
+    <zip destfile="${dist}/testclient.war">
+      <fileset dir="testapp" includes="*"/>
+    </zip>
   </target>
 
   <target name="clean" description="clean up">
