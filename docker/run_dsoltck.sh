@@ -14,6 +14,12 @@
 #
 # SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
 
+which ant
+ant -version
+
+which java
+java -version
+
 unzip -o ${WORKSPACE}/bundles/dsol-tck-1.0.zip -d ${WORKSPACE}
 unzip ${WORKSPACE}/dsol-tck-1.0.jar -d ${WORKSPACE}
 
@@ -54,13 +60,15 @@ $JAVA_HOME/bin/java VerifySMAP ${GF_HOME}/vi/glassfish5/glassfish/domains/domain
 
 output=$(grep "is a correctly formatted SMAP" smap.log | wc -l)
 echo $output
+if [[ "$output" < 1 ]];then
+  failures="1"
+  status="Failed"
+else
+  failures="0"
+  status="Passed"
+fi
 
-which ant
-ant -version
+echo "<testsuite id="1" name="DSOL-TCK" tests="1" failures="${failures}" errors="0" disabled="0" skipped="0"" > dsoltck-junit-report.xml
+echo "<testcase name="VerifySMAP" classname="VerifySMAP" time="0" status="${status}"><system-out></system-out></testcase>" >> dsoltck-junit-report.xml
+echo "</testsuite>" >> dsoltck-junit-report.xml
 
-which java
-java -version
-
-#mkdir -p $WORKSPACE/results/junitreports/
-#JT_REPORT_DIR=$WORKSPACE/JTreport
-#$JAVA_HOME/bin/java -Djunit.embed.sysout=true -jar ${WORKSPACE}/docker/JTReportParser/JTReportParser.jar $WORKSPACE/args.txt $JT_REPORT_DIR $WORKSPACE/results/junitreports/ 
