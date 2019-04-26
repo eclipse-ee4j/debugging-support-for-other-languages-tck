@@ -62,6 +62,8 @@ spec:
             env
             bash -x ${WORKSPACE}/docker/run_dsoltck.sh
           """
+          archiveArtifacts artifacts: "dsoltck-junit-report.xml"
+          junit testResults: '*junit-report.xml', allowEmptyResults: true
         }
       }
     }

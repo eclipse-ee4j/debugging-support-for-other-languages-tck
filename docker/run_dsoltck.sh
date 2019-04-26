@@ -72,5 +72,5 @@ echo "<testsuite id=\"1\" name=\"DSOL-TCK\" tests=\"1\" failures=\"${failures}\"
 echo "<testcase name=\"VerifySMAP\" classname=\"VerifySMAP\" time=\"0\" status=\"${status}\"><system-out></system-out></testcase>" >> $WORKSPACE/dsoltck-junit-report.xml
 echo "</testsuite>" >> $WORKSPACE/dsoltck-junit-report.xml
 echo "" >> $WORKSPACE/dsoltck-junit-report.xml
-chmod 777 dsoltck-junit-report.xml
+chmod 777 $WORKSPACE/dsoltck-junit-report.xml
 
