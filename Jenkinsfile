@@ -18,14 +18,14 @@ spec:
     - "localhost.localdomain"
   containers:
   - name: dsol-tck-ci
-    image: anajosep/cts-jaf:0.1
+    image: jakartaee/cts-dsol-base:0.1
     command:
     - cat
     tty: true
     imagePullPolicy: Always
     resources:
       limits:
-        memory: "8Gi"
+        memory: "4Gi"
         cpu: "2.0"
 """
     }
