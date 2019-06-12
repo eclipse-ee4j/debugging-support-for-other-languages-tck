@@ -1,0 +1,51 @@
+type=page
+status=published
+title=Assertions
+prev=config.html
+~~~~~~
+include::attributes.conf[]
+Assertions
+==========
+
+[[GBFWO]]
+
+
+[[assertions]]
+5 Assertions
+------------
+
+This chapter includes the following topics:
+
+* link:#GBFUZ[Assertions Tested with the {TechnologyShortName} {TechnologyVersion} TCK]
+
+
+[[GBFUZ]][[assertions-tested-with-tck]]
+
+5.1 Assertions Tested with the {TechnologyShortName} {TechnologyVersion} TCK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1.  Syntax must be valid, per the grammar in the specification.
+2.  A resolved SMAP must specify a 'DefaultStratumId'.
+3.  A specified `DefaultStratumId` must either be "Java" or be the `StratumId` of a
+`StratumSection`.
+4.  No `StratumSection` may have a `StratumId` of "Java".
+5.  A `FileSection` may only occur after a `StratumSection`.
+6.  There must be exactly one `FileSection` after each `StratumSection`.
+7.  In a `FileSection`, each `FileId` must be unique within that `FileSection`.
+8.  In a `FileSection`, the `FileName` must be non empty.
+9.  In a `FileSection`, the `AbsoluteFileName`, if specified, must be non empty.
+10. A `LineSection` may only occur after a `StratumSection`.
+11. There must be exactly one `LineSection` after each `StratumSection`.
+12. In a `LineSection`, `RepeatCount` must be greater than or equal to one.
+13. In a `LineSection`, `OutputLineIncrement` must be greater than or equal to zero.
+14. In a `LineSection`, `InputStartLine` must be greater than or equal to one.
+15. In a `LineSection`, `OutputStartLine` must be greater than or equal to one.
+16. In a `LineSection`, `LineFileId` must be a `FileId` in the `FileSection`
+after the same `StratumSection`.
+17. In a `VendorSection`, the `VENDORID` must be well formed, per the specification.
+18. `FutureSection` must not be used until defined in the maintenance phase of the JSR.
+19. There must be at least one `StratumSection`.
+20. An embedded SMAP must not occur in a resolved SMAP.
+21. An `OpenEmbeddedSection` must be followed by at least one SMAP, and terminated
+with `CloseEmbeddedSection`.
+22. `StratumId` of `CloseEmbeddedSection` must match `StratumId` of `OpenEmbeddedSection`.

@@ -1,0 +1,68 @@
+type=page
+status=published
+title=Installation
+next=config.html
+prev=rules.html
+~~~~~~
+include::attributes.conf[]
+Installation
+============
+
+[[GBFTP]]
+
+
+[[installation]]
+3 Installation
+--------------
+
+This chapter explains how to install the {TechnologyFullName} TCK software.
+This chapter contains the following sections:
+
+* link:#GBFUD[Obtaining the Reference Implementation]
+* link:#GBFTS[Installing the Software]
+
+[[GBFUD]][[obtaining-the-reference-implementation]]
+
+3.1 Obtaining the Reference Implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Reference Implementation for {TechnologyShortName} {TechnologyVersion} is
+Java 2 Platform, Enterprise Edition ("J2EE" ) version 1.4. Follow the
+instructions for installing J2EE.
+
+[[GBFTS]][[installing-the-software]]
+
+3.2 Installing the Software
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Copy the test (`dsol-tck.jar`) and/or configure the class path such that the test is
+available on the class path. Adding options to the “java” command line to
+accomplish this is acceptable.
+
+Debugging {TechnologyShortName} TCK Contents
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The top most Debugging Support for Other Languages TCK installation directory, is
+referred to as TCK_DIRECTORY throughout the Debugging Support for Other
+Languages TCK documentation. You can name this directory whatever you want.
+
+Once the Debugging Support for Other Languages TCK is installed, several
+directories will be created under the TCK_DIRECTORY/. The contents of these
+directories are as follows (on Win32 platforms assume backslashes in directory
+paths, instead of forward slashes used here).
+
+Table 3-1 Definitions 
+
+[width="100%",cols="25%,75%",options="header",]
+|=======================================================================
+|File or Directory |Contents
+|`dsol-tck.jar`|Contains class files for the {TechnologyShortName} TCK.
+
+|`doc/` |This directory and its subdirectories contain all of
+the documentation for the {TechnologyShortName} TCK.
+
+|`doc/dsol-tck/`|Contains the {TechnologyShortName} TCK User’s Guide (dsol-tck.pdf).
+
+|`src/`|Contains the source files of the TCK.
+
+|=======================================================================
