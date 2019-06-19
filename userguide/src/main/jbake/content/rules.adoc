@@ -366,7 +366,7 @@ Community Process (http://jcp.org/en/home/index) site.
 [[CJABAHGI]][[libraries-for-java-api-for-restful-web-services-version-2.1]]
 
 2.5 Reference Runtime for {TechnologyFullName} {TechnologyVersion}
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Designated Reference Runtimes for compatibility testing of {TechnologyFullName} {TechnologyVersion}
 are the Sun Software JRE release 1.4 for Solaris OE/SPARC, and win32.

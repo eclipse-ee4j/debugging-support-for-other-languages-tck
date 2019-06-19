@@ -13,7 +13,7 @@ Setup and Configuration
 
 [[running-the-tck]]
 4 Running the TCK
-------------------
+-----------------
 
 This chapter describes how to use the {TechnologyShortName} TCK.
 This chapter contains the following sections:

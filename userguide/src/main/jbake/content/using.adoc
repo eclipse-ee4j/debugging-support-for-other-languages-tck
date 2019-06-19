@@ -22,7 +22,7 @@ This chapter includes the following topics:
 [[GBFUZ]][[assertions-tested-with-tck]]
 
 5.1 Assertions Tested with the {TechnologyShortName} {TechnologyVersion} TCK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1.  Syntax must be valid, per the grammar in the specification.
 2.  A resolved SMAP must specify a 'DefaultStratumId'.
