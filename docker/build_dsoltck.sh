@@ -29,7 +29,7 @@ ant -version
 
 export ANT_OPTS="-DTS_HOME=$WORKSPACE -DJAVA_HOME=$JAVA_HOME -DJARPATH=$WORKSPACE"
 export PATH="$ANT_HOME/bin:$JAVA_HOME/bin:$PATH"
-ant clean dist
+ant -f release.xml clean core
 
 mkdir -p ${WORKSPACE}/bundles
 chmod 777 ${WORKSPACE}/dist/*.zip
