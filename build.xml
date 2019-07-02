@@ -23,6 +23,7 @@
   </description>
 
   <!-- set global properties for this build -->
+  <property name="ts.home" value="${basedir}"/>
   <property name="deliverable.name" value="dsol-tck"/>
   <property name="deliverable.version" value="1.0"/>
   <property name="jar.name" 
