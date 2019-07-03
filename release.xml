@@ -28,50 +28,16 @@
     <property name="zip.file" value="${zip.fullname}.zip"/>
 
     <target name="mvn">
-        <exec dir="${basedir}/userguide" executable="mvn"/>
-        <copy toDir="${basedir}/userguide/html/">
-            <fileset dir="${basedir}/userguide/target/staging/"/>
+        <exec dir="${ts.home}/userguide" executable="mvn"/>
+        <copy toDir="${dist}/docs/">
+            <fileset dir="${ts.home}/userguide/target"
+                     includes="staging/*.html,
+                     generated-docs/*.pdf"/>
         </copy>
     </target>
 
-    <target name="core" depends="dist, mvn, _create.version.file">
+    <target name="core" depends="mvn, dist">
         <delete file="${zip.file}" quiet="true"/>
-        <zip destfile="${zip.file}">
-            <zipfileset dir="${ts.home}"
-               includes="build.xml,
-                                    javatest.jar,
-                        sigtest.jar,
-                        version,
-                        docs/html/**,
-                        docs/javadocs/**,
-                        tests/api/**,
-                        tests/testsuite.html,
-                        tests/testsuite.jtt,
-                        tests/SignatureTest.html,
-                        tests/*.sig,
-                        tests/mailboxes/**,
-                        tests/testdata/**,
-                        lib/*.jte,
-                        lib/*.jti,
-                        lib/*.jtx,
-                        tools/**,
-                        classes/**,
-                        LICENSE.md,
-                        harness/**"
-                        prefix="DSOL"/>
-</zip>
-    </target>
-
-    <target name="_create.version.file">
-        <tstamp>
-            <format property="time.stamp" pattern="EEE, d MMM yyyy HH:mm:ss" locale="en"/>
-        </tstamp>
-        <touch file="${ts.home}/version"/>
-        <propertyfile file="${ts.home}/deliverable.version"
-                      comment="TCK Bundle Version Information">
-            <entry key="build.name"                  value="${zip.fullname}"/>
-            <entry key="build.date.time"             value="${time.stamp}"/>
-            <entry key="build.comment"               value="${ts.build.comment}"/>
-        </propertyfile>
+        <antcall target="mvn"/>
     </target>
 </project>
