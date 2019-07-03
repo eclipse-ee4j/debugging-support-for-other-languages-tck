@@ -16,10 +16,10 @@
 
 -->
 
-<project name="jsp-debugging-tck" default="dist" basedir=".">
+<project name="dsol-tck" default="dist" basedir=".">
 
   <description>
-      Build file for building JSP Debugging TCK
+      Build file for building DSOL-TCK
   </description>
 
   <!-- set global properties for this build -->
@@ -52,11 +52,12 @@
     <!-- Create the distribution directory -->
     <mkdir dir="${dist}"/>
     <jar jarfile="${dist}/${jar.name}" basedir="${build}"/>
-    <zip destfile="${dist}/${bundle.name}">
+    <zip destfile="${bundle.name}">
       <fileset dir="." includes="doc/**/*"/>
       <fileset dir="." includes="src/**/*"/>
       <fileset dir="." includes="*.md"/>
       <fileset dir="." includes="build.xml"/>
+      <fileset dir="dist" includes="docs/**/*"/>
       <fileset dir="dist" includes="*.jar"/>
     </zip>
     <zip destfile="${dist}/testclient.war">
