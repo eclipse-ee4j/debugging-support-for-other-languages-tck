@@ -54,7 +54,7 @@
     <antcall target="mvn"/>
     <jar jarfile="${dist}/${jar.name}" basedir="${build}"/>
     <zip destfile="${dist}/${bundle.name}">
-      <fileset dir="." includes="docs/**/*"/>
+      <fileset dir="." includes="doc/**/*"/>
       <fileset dir="." includes="src/**/*"/>
       <fileset dir="." includes="*.md"/>
       <fileset dir="." includes="build.xml"/>
