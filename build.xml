@@ -58,6 +58,7 @@
       <fileset dir="." includes="src/**/*"/>
       <fileset dir="." includes="*.md"/>
       <fileset dir="." includes="build.xml"/>
+      <fileset dir="dist" includes="docs/**/*"/>
       <fileset dir="dist" includes="*.jar"/>
     </zip>
     <zip destfile="${dist}/testclient.war">
