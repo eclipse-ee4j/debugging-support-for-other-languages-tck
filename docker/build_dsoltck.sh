@@ -30,9 +30,9 @@ ant -version
 export ANT_OPTS="-DTS_HOME=$WORKSPACE -DJAVA_HOME=$JAVA_HOME -DJARPATH=$WORKSPACE"
 export PATH="$ANT_HOME/bin:$JAVA_HOME/bin:$PATH"
 if [[ "$LICENSE" == "EFTL" || "$LICENSE" == "eftl" ]]; then
-	ant clean dist
-else
 	ant clean dist_eftl
+else
+	ant clean dist
 fi
 mkdir -p ${WORKSPACE}/bundles
 chmod 777 ${WORKSPACE}/dist/*.zip
