@@ -23,6 +23,13 @@ java -version
 unzip -o ${WORKSPACE}/bundles/dsol-tck-1.0.zip -d ${WORKSPACE}
 unzip ${WORKSPACE}/dsol-tck-1.0.jar -d ${WORKSPACE}
 
+if ls ${WORKSPACE}/bundles/*dsol-tck-*.zip 1> /dev/null 2>&1; then
+  unzip ${WORKSPACE}/bundles/*dsol-tck*.zip -d ${WORKSPACE}
+  unzip ${WORKSPACE}/bundles/dsol-tck*.jar -d ${WORKSPACE}
+else
+  echo "[ERROR] TCK bundle not found"
+  exit 1
+fi
 cd $WORKSPACE
 
 export GF_HOME="${WORKSPACE}"

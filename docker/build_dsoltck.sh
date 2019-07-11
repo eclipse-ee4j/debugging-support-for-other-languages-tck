@@ -21,6 +21,13 @@ echo "export PATH=$PATH"
 
 export TS_HOME=$WORKSPACE
 
+if [ ! -z "$TCK_BUNDLE_BASE_URL" ]; then
+  #use pre-built tck bundle from this location to run test
+  mkdir -p ${WORKSPACE}/bundles
+  wget  --progress=bar:force --no-cache ${TCK_BUNDLE_BASE_URL}/${TCK_BUNDLE_FILE_NAME} -O ${WORKSPACE}/bundles/dsol-tck-1.0.0.zip
+  exit 0
+fi
+
 
 cd $WORKSPACE
 
