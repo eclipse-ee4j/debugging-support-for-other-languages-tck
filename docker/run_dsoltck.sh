@@ -20,9 +20,6 @@ ant -version
 which java
 java -version
 
-unzip -o ${WORKSPACE}/bundles/dsol-tck-1.0.zip -d ${WORKSPACE}
-unzip ${WORKSPACE}/dsol-tck-1.0.jar -d ${WORKSPACE}
-
 if ls ${WORKSPACE}/bundles/*dsol-tck-*.zip 1> /dev/null 2>&1; then
   unzip ${WORKSPACE}/bundles/*dsol-tck*.zip -d ${WORKSPACE}
   unzip ${WORKSPACE}/bundles/dsol-tck*.jar -d ${WORKSPACE}
