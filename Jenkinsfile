@@ -37,7 +37,13 @@ spec:
     string(name: 'GF_VERSION_URL', 
            defaultValue: '', 
            description: 'URL required for downloading GlassFish version details' )
-	choice(name: 'LICENSE', choices: 'EPL\nEFTL',
+    string(name: 'TCK_BUNDLE_BASE_URL',
+           defaultValue: '',
+           description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
+    string(name: 'TCK_BUNDLE_FILE_NAME', 
+           defaultValue: 'dsol-tck-1.0.0.zip', 
+	   description: 'Name of bundle file to be appended to the base url' )
+    choice(name: 'LICENSE', choices: 'EPL\nEFTL',
            description: 'License file to be used to build the TCK bundle(s) either EPL(default) or Eclipse Foundation TCK License' )
   }
   environment {

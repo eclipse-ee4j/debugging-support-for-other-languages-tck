@@ -20,9 +20,13 @@ ant -version
 which java
 java -version
 
-unzip -o ${WORKSPACE}/bundles/dsol-tck-1.0.zip -d ${WORKSPACE}
-unzip ${WORKSPACE}/dsol-tck-1.0.jar -d ${WORKSPACE}
-
+if ls ${WORKSPACE}/bundles/*dsol-tck-*.zip 1> /dev/null 2>&1; then
+  unzip ${WORKSPACE}/bundles/*dsol-tck*.zip -d ${WORKSPACE}
+  unzip ${WORKSPACE}/dsol-tck*.jar -d ${WORKSPACE}
+else
+  echo "[ERROR] TCK bundle not found"
+  exit 1
+fi
 cd $WORKSPACE
 
 export GF_HOME="${WORKSPACE}"
@@ -50,7 +54,7 @@ sed -i "s#<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>#<s
 
 ${GF_HOME}/vi/glassfish5/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} start-domain
 
-${GF_HOME}/vi/glassfish5/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} deploy ${WORKSPACE}/bundles/testclient.war
+${GF_HOME}/vi/glassfish5/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} deploy ${WORKSPACE}/testclient.war
 curl http://localhost:8080/testclient/Hello.jsp
 
 ${GF_HOME}/vi/glassfish5/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} stop-domain
