@@ -21,8 +21,8 @@ which java
 java -version
 
 if ls ${WORKSPACE}/bundles/*dsol-tck-*.zip 1> /dev/null 2>&1; then
-  unzip ${WORKSPACE}/bundles/*dsol-tck*.zip -d ${WORKSPACE}
-  unzip ${WORKSPACE}/dsol-tck*.jar -d ${WORKSPACE}
+  unzip -o ${WORKSPACE}/bundles/*dsol-tck*.zip -d ${WORKSPACE}
+  unzip -o ${WORKSPACE}/dsol-tck*.jar -d ${WORKSPACE}
 else
   echo "[ERROR] TCK bundle not found"
   exit 1
