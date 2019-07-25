@@ -46,7 +46,7 @@ chmod 777 ${WORKSPACE}/dist/*.zip
 #cd $WORKSPACE/dist
 cp ${WORKSPACE}/dist/* ${WORKSPACE}/bundles/
 chmod -R 777 ${WORKSPACE}/bundles/
-#for entry in `ls dsol*.zip`; do
+#for entry in `ls debugging*.zip`; do
 #  date=`echo "$entry" | cut -d_ -f2`
 #  strippedEntry=`echo "$entry" | cut -d_ -f1`
 #  echo "copying ${WORKSPACE}/dist/$entry to ${WORKSPACE}/bundles/${strippedEntry}_latest.zip"

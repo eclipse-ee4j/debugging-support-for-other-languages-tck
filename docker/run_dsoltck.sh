@@ -20,9 +20,11 @@ ant -version
 which java
 java -version
 
-if ls ${WORKSPACE}/bundles/*dsol-tck-*.zip 1> /dev/null 2>&1; then
-  unzip -o ${WORKSPACE}/bundles/*dsol-tck*.zip -d ${WORKSPACE}
-  unzip -o ${WORKSPACE}/dsol-tck*.jar -d ${WORKSPACE}
+TCK_NAME=debugging
+
+if ls ${WORKSPACE}/bundles/*${TCK_NAME}-tck-*.zip 1> /dev/null 2>&1; then
+  unzip -o ${WORKSPACE}/bundles/*${TCK_NAME}-tck*.zip -d ${WORKSPACE}
+  unzip -o ${WORKSPACE}/*${TCK_NAME}-tck*.jar -d ${WORKSPACE}
 else
   echo "[ERROR] TCK bundle not found"
   exit 1
@@ -72,9 +74,9 @@ else
   status="Passed"
 fi
 
-echo "<testsuite id=\"1\" name=\"DSOL-TCK\" tests=\"1\" failures=\"${failures}\" errors=\"0\" disabled=\"0\" skipped=\"0\">" > $WORKSPACE/dsoltck-junit-report.xml
-echo "<testcase name=\"VerifySMAP\" classname=\"VerifySMAP\" time=\"0\" status=\"${status}\"><system-out></system-out></testcase>" >> $WORKSPACE/dsoltck-junit-report.xml
-echo "</testsuite>" >> $WORKSPACE/dsoltck-junit-report.xml
-echo "" >> $WORKSPACE/dsoltck-junit-report.xml
-chmod 777 $WORKSPACE/dsoltck-junit-report.xml
+echo "<testsuite id=\"1\" name=\"${TCK_NAME}-tck\" tests=\"1\" failures=\"${failures}\" errors=\"0\" disabled=\"0\" skipped=\"0\">" > $WORKSPACE/${TCK_NAME}-tck-junit-report.xml
+echo "<testcase name=\"VerifySMAP\" classname=\"VerifySMAP\" time=\"0\" status=\"${status}\"><system-out></system-out></testcase>" >> $WORKSPACE/${TCK_NAME}-tck-junit-report.xml
+echo "</testsuite>" >> $WORKSPACE/${TCK_NAME}-tck-junit-report.xml
+echo "" >> $WORKSPACE/${TCK_NAME}-tck-junit-report.xml
+chmod 777 $WORKSPACE/${TCK_NAME}-tck-junit-report.xml
 
