@@ -16,16 +16,16 @@
 
 -->
 
-<project name="dsol-tck" default="dist" basedir=".">
+<project name="debugging-tck" default="dist" basedir=".">
 
   <description>
-      Build file for building DSOL-TCK
+      Build file for building Debugging-TCK
   </description>
 
   <!-- set global properties for this build -->
   <property name="ts.home" value="${basedir}"/>
-  <property name="deliverable.name" value="dsol-tck"/>
-  <property name="eclipse.deliverable.name" value="eclipse-dsol-tck"/>
+  <property name="deliverable.name" value="debugging-tck"/>
+  <property name="eclipse.deliverable.name" value="eclipse-debugging-tck"/>
   <property name="deliverable.version" value="1.0.0"/>
   <property name="jar.name"
             value="${deliverable.name}-${deliverable.version}.jar"/>
