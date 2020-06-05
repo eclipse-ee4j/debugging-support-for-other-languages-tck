@@ -28,7 +28,7 @@ Build Instructions
     3. The generated bundle dsol-tck-<version>.zip can be found 
        under dist directory.
   
-Running the TCK against Glassfish 5.0
+Running the TCK against Glassfish 5.0+
 ========================================
   Tools Required:
     - JDK 8+
