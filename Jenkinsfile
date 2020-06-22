@@ -18,7 +18,7 @@ spec:
     - "localhost.localdomain"
   containers:
   - name: dsol-tck-ci
-    image: jakartaee/cts-dsol-base:0.1
+    image: jakartaee/cts-dsol-base:0.2
     command:
     - cat
     tty: true
