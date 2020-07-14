@@ -56,6 +56,14 @@ echo "" >> ${GF_HOME}/change-admin-password.txt
 
 ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${GF_HOME}/change-admin-password.txt change-admin-password
 
+if [[ "$JDK" == "JDK11" || "$JDK" == "jdk11" ]];then
+  export JAVA_HOME=${JDK11_HOME}
+  export PATH=$JAVA_HOME/bin:$PATH
+fi
+
+which java
+java -version
+
 sed -i "s#<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>#<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>\n<init-param>\n<param-name>dumpSmap</param-name>\n<param-value>true</param-value>\n</init-param> #g" ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/domains/domain1/config/default-web.xml
 
 ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} start-domain
