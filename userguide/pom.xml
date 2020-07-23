@@ -28,7 +28,7 @@
     <artifactId>tck_dsol</artifactId>
     <packaging>pom</packaging>
     <version>2.0.0-SNAPSHOT</version>
-    <name>Eclipse Foundation Technology Compatibility Kit User's Guide for Debugging Support for Other Languages (DSOL) 1.0 for Jakarta EE, Release 1.0</name>
+    <name>Eclipse Foundation Technology Compatibility Kit User's Guide for Debugging Support for Other Languages (DSOL) for Jakarta EE, Release 2.0</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
