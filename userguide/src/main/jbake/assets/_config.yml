@@ -1,7 +1,7 @@
 remote_theme: jakartaee/jekyll-theme-jakarta-ee
 
 title: [tck_dsol_v2_0]
-description: [Jakarta EE Technology Compatibility Kit User's Guide for Jakarta Debugging Upport for Other Languages (DSOL), Release 2.0]
+description: [Jakarta EE Technology Compatibility Kit User's Guide for Jakarta Debugging Support for Other Languages (DSOL), Release 2.0]
 
 # sidebar links url
 links:
