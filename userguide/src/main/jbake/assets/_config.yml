@@ -1,14 +1,13 @@
-theme: jekyll-theme-architect
+remote_theme: jakartaee/jekyll-theme-jakarta-ee
 
-title: [tck_jaxrs_v2_1]
-description: [Oracle Technology Compatibility Kit User's Guide for Java API for RESTful Web Services (JAX-RS) 2.1 for Technology Licensees, Release 2.1]
+title: [tck_dsol_v2_0]
+description: [Jakarta EE Technology Compatibility Kit User's Guide for Jakarta Debugging Support for Other Languages (DSOL), Release 2.0]
 
 # sidebar links url
 links:
-  source: https://github.com/javaee/tck_jaxrs_v2_1
-  download: https://github.com/javaee/tck_jaxrs_v2_1/releases
-  #mailinglist: https://javaee.groups.io/g/tck_jaxrs_v2_1
+  source: https://github.com/eclipse-ee4j/jsp-api
+  download: https://github.com/eclipse-ee4j/jsp-api/releases
+  #mailinglist: https://javaee.groups.io/g/tck_dsol_v2_0
   #javadocs:
-  docs: https://javaee.github.io/tck_jaxrs_v2_1
+  docs: https://jakarta.ee/specifications/debugging/2.0
   #faq:
-

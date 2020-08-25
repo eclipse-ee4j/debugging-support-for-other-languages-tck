@@ -1,7 +1,7 @@
 The file attributes.conf defines several attributes (variables) that
 need to be customized for each technology.
 
-Most of the *.adoc files should not need to be modified.
+The *.adoc files should not be modified.
 
 The following "include" files should be customized as necessary
 for the specific technology:
@@ -16,30 +16,16 @@ for the specific technology:
 	Detailed instructions for configuring the TCK, included in
 	Chapter 4.  Unfortunately, these are sections 4.1 - 4.3,
 	so even if the TCK doesn't require 3 sections you need to
-	make up something, or else renumber the subsequent sections
-	and fix all the references (ugh).
+	make up something, or else change the sections to "N/A".
 
 - packages.inc
 
-	A simple list of Java package names for the technology.
+	A simple list of Jakarta EE package names for the technology.
 
 - tck-packages.inc
 
-	A list of additional software pacakges included in the TCK.
-
-- debug-tips.inc
-
-	Technology-specific troubleshooting tips for Chapter 6.
-	If this isn't needed, it can be an empty file, but toc.adoc
-	will need to be fixed.
-
-- rebuild.adoc
-
-	Special instructions for rebuilding the war files used by some TCKs.
-	If needed, customize it appropriately and make sure the "next"
-	pointer in faq.adoc points to it.  Otherwise, remove the "next"
-	pointer in faq.adoc and update toc.adoc.
+	A list of additional software packages included in the TCK.
 
 
-Note that this template is NOT sufficient for the Java EE platform
-or Web Profile.
+Note that this template is NOT sufficient for the Jakarta EE platform
+or Jakarta EE Web Profile.
