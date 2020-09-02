@@ -94,9 +94,15 @@
         <exec dir="${ts.home}/userguide" executable="mvn"/>
         <copy toDir="${dist}/docs/">
             <fileset dir="${ts.home}/userguide/target"
-                     includes="staging/*.html,
+                     includes="staging/*.html,staging/css/*,staging/img/*,
                      generated-docs/*.pdf"/>
         </copy>
+        <move todir="${dist}/docs/pdf-usersguide">
+            <fileset dir="${dist}/docs/generated-docs"/>
+        </move>
+        <move todir="${dist}/docs/html-usersguide">
+            <fileset dir="${dist}/docs/staging"/>
+        </move>
    </target>
 
 
