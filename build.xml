@@ -31,6 +31,8 @@
             value="${deliverable.name}-${deliverable.version}.jar"/>
   <property name="bundle.name"
             value="${deliverable.name}-${deliverable.version}.zip"/>
+  <property name="bundle.folder"
+            value="${deliverable.name}"/>
   <property name="eclipse.bundle.name"
             value="${eclipse.deliverable.name}-${deliverable.version}.zip"/>
   <property name="src" location="src"/>
@@ -43,52 +45,65 @@
     <!-- Create the build directory structure used by compile -->
     <mkdir dir="${build}"/>
     </target>
-
+	
   <target name="compile" depends="init"
           description="compile the source">
     <!-- Compile the java code from ${src} into ${build} -->
     <javac srcdir="${src}" destdir="${build}" encoding="ISO-8859-1" />
    </target>
-
-  <target name="dist" depends="clean, compile"
-          description="generate the distribution">
-    <!-- Create the distribution directory -->
+   
+   <target name="copyLicense" depends="mvn"
+          description="copy the file">
     <mkdir dir="${dist}"/>
-    <antcall target="mvn"/>
+    <mkdir dir="${dist}/${bundle.folder}"/>
+      <copy file="LICENSE.md" todir="${dist}/${bundle.folder}"/>
+   </target>
+
+   <target name="dist" depends="clean, compile"
+          description="generate the distribution">
+    <antcall target="copyLicense"/>
     <jar jarfile="${dist}/${jar.name}" basedir="${build}"/>
     <zip destfile="${dist}/testclient.war">
       <fileset dir="testapp" includes="*"/>
     </zip>
     <zip destfile="${dist}/${bundle.name}">
-      <fileset dir="." includes="doc/**/*"/>
-      <fileset dir="." includes="src/**/*"/>
-      <fileset dir="." includes="LICENSE.md"/>
-      <fileset dir="." includes="build.xml"/>
-      <fileset dir="dist" includes="docs/**/*"/>
-      <fileset dir="dist" includes="*.jar"/>
-      <fileset dir="dist" includes="*.war"/>
+        <zipfileset dir="${dist}/${bundle.folder}" prefix="${bundle.folder}"/>
+        <zipfileset dir="." includes="doc/**/*" prefix="${bundle.folder}"/>
+	<zipfileset dir="." includes="src/**/*" prefix="${bundle.folder}"/>
+	<zipfileset dir="." includes="build.xml" prefix="${bundle.folder}"/>
+	<zipfileset dir="dist" includes="*.jar" prefix="${bundle.folder}"/>
+	<zipfileset dir="dist" includes="*.war" prefix="${bundle.folder}"/>
+	<zipfileset dir="dist" includes="docs/**/*" prefix="${bundle.folder}"/>
     </zip>
-  </target>
+   </target>
   
-  <target name="dist_eftl" depends="clean, compile"
-          description="generate the distribution">
-    <!-- Create the distribution directory -->
+  <target name="copyLicenseEFTL" depends="mvn"
+          description="copying the LICENSE file for EFTL bundle">
     <mkdir dir="${dist}"/>
-    <antcall target="mvn"/>
+    <mkdir dir="${dist}/${bundle.folder}"/>
+      <move file="LICENSE.md" tofile="LICENSE1.md"/>
+      <copy file="LICENSE_EFTL.md" tofile="LICENSE.md" />
+      <copy file="LICENSE.md" todir="${dist}/${bundle.folder}"/>
+      <move file="LICENSE1.md" tofile="LICENSE.md"/>
+  </target>
+    
+   <target name="dist_eftl" depends="clean, compile"
+          description="generate the distribution">
+    <antcall target="copyLicenseEFTL"/>
     <jar jarfile="${dist}/${jar.name}" basedir="${build}"/>
     <zip destfile="${dist}/testclient.war">
       <fileset dir="testapp" includes="*"/>
     </zip>
     <zip destfile="${dist}/${eclipse.bundle.name}">
-      <fileset dir="." includes="doc/**/*"/>
-      <fileset dir="." includes="src/**/*"/>
-      <fileset dir="." includes="LICENSE_EFTL.md"/>
-      <fileset dir="." includes="build.xml"/>
-      <fileset dir="dist" includes="docs/**/*"/>
-      <fileset dir="dist" includes="*.jar"/>
-      <fileset dir="dist" includes="*.war"/>
+        <zipfileset dir="${dist}/${bundle.folder}" prefix="${bundle.folder}"/>
+        <zipfileset dir="." includes="doc/**/*" prefix="${bundle.folder}"/>
+        <zipfileset dir="." includes="src/**/*" prefix="${bundle.folder}"/>
+        <zipfileset dir="." includes="build.xml" prefix="${bundle.folder}"/>
+        <zipfileset dir="dist" includes="*.jar" prefix="${bundle.folder}"/>
+        <zipfileset dir="dist" includes="*.war" prefix="${bundle.folder}"/>
+        <zipfileset dir="dist" includes="docs/**/*" prefix="${bundle.folder}"/>
     </zip>
-  </target>
+   </target>
 
   <target name="mvn">
         <exec dir="${ts.home}/userguide" executable="mvn"/>
