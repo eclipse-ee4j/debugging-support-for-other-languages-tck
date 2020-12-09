@@ -78,13 +78,10 @@
    </target>
   
   <target name="copyLicenseEFTL" depends="mvn"
-          description="copy the file">
+          description="copying the LICENSE file for EFTL">
     <mkdir dir="${dist}"/>
     <mkdir dir="${dist}/${bundle.folder}"/>
-      <move file="LICENSE.md" tofile="LICENSE1.md"/>
-      <copy file="LICENSE_EFTL.md" tofile="LICENSE.md" />
-      <copy file="LICENSE.md" todir="${dist}/${bundle.folder}"/>
-      <move file="LICENSE1.md" tofile="LICENSE.md"/>
+      <copy file="LICENSE_EFTL.md" todir="${dist}/${bundle.folder}/LICENSE.md"/>
    </target>
     
    <target name="dist_eftl" depends="clean, compile"
