@@ -1,6 +1,6 @@
 #!/bin/bash -xe
 #
-# Copyright (c) 2019, 2020 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2019, 2021 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -24,7 +24,7 @@ TCK_NAME=debugging
 
 if ls ${WORKSPACE}/bundles/*${TCK_NAME}-tck-*.zip 1> /dev/null 2>&1; then
   unzip -o ${WORKSPACE}/bundles/*${TCK_NAME}-tck*.zip -d ${WORKSPACE}
-  unzip -o ${WORKSPACE}/*${TCK_NAME}-tck*.jar -d ${WORKSPACE}
+  unzip -o ${WORKSPACE}/bundles/*${TCK_NAME}-tck*.jar -d ${WORKSPACE}
 else
   echo "[ERROR] TCK bundle not found"
   exit 1
@@ -54,8 +54,6 @@ echo "AS_ADMIN_NEWPASSWORD=adminadmin" >> ${GF_HOME}/change-admin-password.txt
 
 echo "" >> ${GF_HOME}/change-admin-password.txt
 
-${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${GF_HOME}/change-admin-password.txt change-admin-password
-
 if [[ "$JDK" == "JDK11" || "$JDK" == "jdk11" ]];then
   export JAVA_HOME=${JDK11_HOME}
   export PATH=$JAVA_HOME/bin:$PATH
@@ -64,11 +62,13 @@ fi
 which java
 java -version
 
+${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${GF_HOME}/change-admin-password.txt change-admin-password
+
 sed -i "s#<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>#<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>\n<init-param>\n<param-name>dumpSmap</param-name>\n<param-value>true</param-value>\n</init-param> #g" ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/domains/domain1/config/default-web.xml
 
 ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} start-domain
 
-${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} deploy ${WORKSPACE}/testclient.war
+${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} deploy ${WORKSPACE}/bundles/testclient.war
 curl http://localhost:8080/testclient/Hello.jsp
 
 ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} stop-domain
