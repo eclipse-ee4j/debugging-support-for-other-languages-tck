@@ -26,7 +26,7 @@
   <property name="ts.home" value="${basedir}"/>
   <property name="deliverable.name" value="debugging-tck"/>
   <property name="eclipse.deliverable.name" value="jakarta-debugging-tck"/>
-  <property name="deliverable.version" value="2.0.0"/>
+  <property name="deliverable.version" value="2.0.1"/>
   <property name="jar.name"
             value="${deliverable.name}-${deliverable.version}.jar"/>
   <property name="bundle.name"

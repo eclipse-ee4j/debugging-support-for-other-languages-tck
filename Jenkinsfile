@@ -41,7 +41,7 @@ spec:
            defaultValue: '',
            description: 'Base URL required for downloading prebuilt binary TCK Bundle from a hosted location' )
     string(name: 'TCK_BUNDLE_FILE_NAME', 
-           defaultValue: 'debugging-tck-2.0.0.zip', 
+           defaultValue: 'debugging-tck-2.0.1.zip', 
 	   description: 'Name of bundle file to be appended to the base url' )
     choice(name: 'JDK', choices: 'JDK8\nJDK11',
            description: 'Java SE Version to be used for running TCK either JDK8/JDK11' )
