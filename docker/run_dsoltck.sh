@@ -24,7 +24,7 @@ TCK_NAME=debugging
 
 if ls ${WORKSPACE}/bundles/*${TCK_NAME}-tck-*.zip 1> /dev/null 2>&1; then
   unzip -o ${WORKSPACE}/bundles/*${TCK_NAME}-tck*.zip -d ${WORKSPACE}
-  unzip -o ${WORKSPACE}/bundles/*${TCK_NAME}-tck*.jar -d ${WORKSPACE}
+  unzip -o ${WORKSPACE}/*${TCK_NAME}-tck*.jar -d ${WORKSPACE}
 else
   echo "[ERROR] TCK bundle not found"
   exit 1
@@ -68,7 +68,7 @@ sed -i "s#<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>#<s
 
 ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} start-domain
 
-${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} deploy ${WORKSPACE}/bundles/testclient.war
+${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} deploy ${WORKSPACE}/testclient.war
 curl http://localhost:8080/testclient/Hello.jsp
 
 ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} stop-domain
