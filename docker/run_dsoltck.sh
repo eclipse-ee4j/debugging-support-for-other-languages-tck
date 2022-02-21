@@ -1,6 +1,6 @@
 #!/bin/bash -xe
 #
-# Copyright (c) 2019, 2021 Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2019, 2022 Oracle and/or its affiliates. All rights reserved.
 #
 # This program and the accompanying materials are made available under the
 # terms of the Eclipse Public License v. 2.0, which is available at
@@ -24,7 +24,7 @@ TCK_NAME=debugging
 
 if ls ${WORKSPACE}/bundles/*${TCK_NAME}-tck-*.zip 1> /dev/null 2>&1; then
   unzip -o ${WORKSPACE}/bundles/*${TCK_NAME}-tck*.zip -d ${WORKSPACE}
-  unzip -o ${WORKSPACE}/*${TCK_NAME}-tck*.jar -d ${WORKSPACE}
+  unzip -o ${WORKSPACE}/${TCK_NAME}-tck/*${TCK_NAME}-tck*.jar -d ${WORKSPACE}
 else
   echo "[ERROR] TCK bundle not found"
   exit 1
@@ -34,7 +34,7 @@ cd $WORKSPACE
 export GF_HOME="${WORKSPACE}"
 
 if [ -z "$GF_TOPLEVEL_DIR" ]; then
-  export GF_TOPLEVEL_DIR=glassfish6
+  export GF_TOPLEVEL_DIR=glassfish7
 fi
 
 WGET_PROPS="--progress=bar:force --no-cache"
@@ -68,7 +68,7 @@ sed -i "s#<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>#<s
 
 ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} start-domain
 
-${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} deploy ${WORKSPACE}/testclient.war
+${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} deploy ${WORKSPACE}/${TCK_NAME}-tck/testclient.war
 curl http://localhost:8080/testclient/Hello.jsp
 
 ${GF_HOME}/vi/$GF_TOPLEVEL_DIR/glassfish/bin/asadmin --user admin --passwordfile ${ADMIN_PASSWORD_FILE} stop-domain
