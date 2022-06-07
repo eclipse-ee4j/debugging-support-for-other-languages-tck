@@ -44,7 +44,7 @@ echo "Download and install GlassFish ..."
 wget $WGET_PROPS $GF_BUNDLE_URL -O latest-glassfish.zip
 rm -rf ${GF_HOME}/vi
 mkdir -p ${GF_HOME}/vi
-unzip -o ${WORKSPACE}/latest-glassfish.zip -d ${GF_HOME}/vi
+unzip -q -o ${WORKSPACE}/latest-glassfish.zip -d ${GF_HOME}/vi
 
 export ADMIN_PASSWORD_FILE="${GF_HOME}/admin-password.txt"
 echo "AS_ADMIN_PASSWORD=adminadmin" > ${ADMIN_PASSWORD_FILE}
